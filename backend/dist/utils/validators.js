@@ -11,12 +11,15 @@ export const validate = (validations) => {
         next();
     };
 };
-export const signupValidator = [
-    body("name").notEmpty().withMessage("Name is required"),
+export const loginValidator = [
     body("email").trim().isEmail().withMessage("Email is required"),
     body("password")
         .trim()
         .isLength({ min: 6 })
         .withMessage("Password should contain atleast 6 characters"),
+];
+export const signupValidator = [
+    body("name").notEmpty().withMessage("Name is required"),
+    ...loginValidator,
 ];
 //# sourceMappingURL=validators.js.map
